@@ -11,10 +11,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.post('/', function (req, res) {
-  res.send('Got a POST request');
-  console.log(req.body.title);
+  	res.send('Got a POST request');
 });
 
+app.post('/createArticle', function (req, res) {
+  	res.send('Got a POST request');
+	fs.writeFile('public/' + req.body.path, req.body.title + "\n" + req.body.content, function(err) {
+		if (err) {
+			return console.log(err);
+		}
+		console.log("Article créé !");
+	});
+});
 
 app.listen(2000);
 
