@@ -16,8 +16,11 @@ app.post('/', function (req, res) {
 
 app.post('/createArticle', function (req, res) {
 
+	console.log(req);
+	console.log(req.body.title);
+
 	// Créer un nouvel article 
-	fs.writeFile('public/' + req.body.path, req.body.title + "\n" + req.body.content, function(err) {
+	fs.writeFile('public' + req.body.path, req.body.title + "\n" + req.body.content, function(err) {
 		if (err) {
 			return console.log(err);
 		}
@@ -35,12 +38,8 @@ app.post('/createArticle', function (req, res) {
 		var menu = JSON.parse(data);
 		// Pousser les modifs dans l'objet
 		menu.menu.push({path : req.body.path, title : req.body.titleForMenu});
-		console.log(req.body.title);
-		console.log(req.body.titleForMenu);
 		// Retransformer l'objet en string
 		var str = JSON.stringify(menu);
-		console.log(str)
-		
 		//Modifier le menu
 		fs.writeFile('public/menu.json', str, 'utf8', function(err){
 			if(err) {
@@ -49,11 +48,20 @@ app.post('/createArticle', function (req, res) {
 			console.log("menu ok");
 		});
 	});
-
-
-	
-
 });
+
+// Pour modifier article (page edit)
+app.post('/modifyArticle', function (req, res) {
+
+	fs.writeFile('public' + req.body.path, req.body.content, 'utf8', function(err, data) {
+		if(err) {
+			return console.log(err);
+		}
+	});
+
+	res.send('Got a POST request POUR Modifier');
+});
+
 
 
 
