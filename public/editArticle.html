@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="node_modules/semantic-ui-css/semantic.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<div id="app">
+
+		<div class="ui centered grid">
+			
+			<div class="ui three item menu">
+				<a class="item" href="/">Voir les articles</a>
+				<a class="item" href="/createArticle.html">Créer un article</a>
+				<a class="item" href="/editArticle.html">Modifier un article</a>
+			</div>
+
+			<div class="ui eight wide two column row">
+				<div class="column">
+				<select id="selectArticle"></select>
+				</div>
+				<div class="column">
+				<button class="ui orange button" id="btnSelectArticle">Modifier cet article</button>
+				</div>
+			</div>
+
+			<div class="row" id="menuArticles"></div>
+
+			<div class="row">
+				<div id="displayCurrentTitle"></div>
+			</div>
+
+			<div class="row">
+				<input id="inputNewTitle" type="text"></input>
+			</div>
+
+			<div class="row">
+				<textarea id="textAreaEdit"></textarea>
+			</div>
+
+			<div class="row">
+				<button class="ui green button" id="btnModify">Enregistrer les modifications</button>
+			</div>
+
+		</div>
+
+	</div>
+
+
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script src="node_modules/showdown/dist/showdown.min.js"></script>
+	<script src="js/editArticle.js"></script>
+</body>
+</html>
