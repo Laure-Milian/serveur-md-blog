@@ -34,7 +34,9 @@ app.post('/createArticle', function (req, res) {
 		// Transformer le menu string en objet
 		var menu = JSON.parse(data);
 		// Pousser les modifs dans l'objet
-		menu.menu.push({path : req.body.path, title : req.body.title});
+		menu.menu.push({path : req.body.path, title : req.body.titleForMenu});
+		console.log(req.body.title);
+		console.log(req.body.titleForMenu);
 		// Retransformer l'objet en string
 		var str = JSON.stringify(menu);
 		console.log(str)
